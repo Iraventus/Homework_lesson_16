@@ -17,6 +17,7 @@ public class WishlistTest extends TestBase {
     void addItemToWishlist() {
         Map<String, String> cookies = new Auth().login("qaguru@qa.guru", "qaguru@qa.guru1");
         String bodyText = readStringFromFile("./src/test/resources/body.txt");
+        String messageText = readStringFromFile("./src/test/resources/message_text.txt");
 
         Response response =
                 given()
@@ -29,6 +30,7 @@ public class WishlistTest extends TestBase {
                         .statusCode(200)
                         .log().body()
                         .body("success", is(true))
+                        .body("message", is(messageText))
                         .extract().response();
         System.out.println(response);
     }
