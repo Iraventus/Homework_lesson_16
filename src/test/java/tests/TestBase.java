@@ -8,7 +8,7 @@ public class TestBase {
 
     @BeforeAll
     static void setUp() {
-        Configuration.remote = "https://user1:1234@selenoid.autotests.cloud/wd/hub/";
+        Configuration.remote = System.getProperty("remote");
         RestAssured.baseURI = "http://demowebshop.tricentis.com";
         Configuration.baseUrl = "http://demowebshop.tricentis.com";
     }
