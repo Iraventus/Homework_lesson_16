@@ -16,7 +16,7 @@ public class LoginTestUI extends TestBaseApi {
 
     @Test
     void loginWithUiTest() {
-        open("/login");
+        open("http://demowebshop.tricentis.com/login");
         $("#Email").val("qaguru@qa.guru");
         $("#Password").val("qaguru@qa.guru1").pressEnter();
         $(".account").shouldHave(text("qaguru@qa.guru"));
@@ -41,7 +41,7 @@ public class LoginTestUI extends TestBaseApi {
         getWebDriver().manage().addCookie(new Cookie("NOPCOMMERCE.AUTH", cookiesMap.get("NOPCOMMERCE.AUTH")));
         getWebDriver().manage().addCookie(new Cookie("ARRAffinity", cookiesMap.get("ARRAffinity")));
 
-        open("");
+        open("http://demowebshop.tricentis.com");
         $(".account").shouldHave(text("qaguru@qa.guru"));
     }
 }
