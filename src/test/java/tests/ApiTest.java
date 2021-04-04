@@ -1,6 +1,7 @@
 package tests;
 
 import io.restassured.http.ContentType;
+import io.restassured.response.Response;
 import org.junit.jupiter.api.Test;
 import org.openqa.selenium.Cookie;
 
@@ -11,15 +12,28 @@ import static com.codeborne.selenide.Selenide.$;
 import static com.codeborne.selenide.Selenide.open;
 import static com.codeborne.selenide.WebDriverRunner.getWebDriver;
 import static io.restassured.RestAssured.given;
+import static restAssured.CustomSpec.spec;
 
-public class LoginTest extends TestBase {
+import static org.hamcrest.Matchers.is;
+import static utils.FileUtils.readStringFromFile;
+
+public class ApiTest extends TestBaseApi {
 
     @Test
-    void loginWithUiTest() {
-        open("/login");
-        $("#Email").val("qaguru@qa.guru");
-        $("#Password").val("qaguru@qa.guru1").pressEnter();
-        $(".account").shouldHave(text("qaguru@qa.guru"));
+    void addItemToWishlist() {
+        String messageText = readStringFromFile("./src/test/resources/message_text.txt");
+
+        Response response =
+                spec().request()
+                        .when()
+                        .post("/addproducttocart/details/34/2")
+                        .then()
+                        .statusCode(200)
+                        .log().body()
+                        .body("success", is(true))
+                        .body("message", is(messageText))
+                        .extract().response();
+        System.out.println(response);
     }
 
     @Test
