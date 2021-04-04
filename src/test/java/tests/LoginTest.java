@@ -41,7 +41,7 @@ public class LoginTest extends TestBase {
         getWebDriver().manage().addCookie(new Cookie("NOPCOMMERCE.AUTH", cookiesMap.get("NOPCOMMERCE.AUTH")));
         getWebDriver().manage().addCookie(new Cookie("ARRAffinity", cookiesMap.get("ARRAffinity")));
 
-        open("");
+        open("http://demowebshop.tricentis.com");
         $(".account").shouldHave(text("qaguru@qa.guru"));
     }
 }
