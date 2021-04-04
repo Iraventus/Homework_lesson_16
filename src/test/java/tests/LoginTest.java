@@ -16,7 +16,7 @@ public class LoginTest extends TestBase {
 
     @Test
     void loginWithUiTest() {
-        open("/login");
+        open("http://demowebshop.tricentis.com/login");
         $("#Email").val("qaguru@qa.guru");
         $("#Password").val("qaguru@qa.guru1").pressEnter();
         $(".account").shouldHave(text("qaguru@qa.guru"));
