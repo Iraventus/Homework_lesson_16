@@ -16,7 +16,7 @@ public class LoginTest extends TestBase {
 
     @Test
     void loginWithUiTest() {
-        open("http://demowebshop.tricentis.com/login");
+        open("/login");
         $("#Email").val("qaguru@qa.guru");
         $("#Password").val("qaguru@qa.guru1").pressEnter();
         $(".account").shouldHave(text("qaguru@qa.guru"));
@@ -41,7 +41,7 @@ public class LoginTest extends TestBase {
         getWebDriver().manage().addCookie(new Cookie("NOPCOMMERCE.AUTH", cookiesMap.get("NOPCOMMERCE.AUTH")));
         getWebDriver().manage().addCookie(new Cookie("ARRAffinity", cookiesMap.get("ARRAffinity")));
 
-        open("http://demowebshop.tricentis.com");
+        open("");
         $(".account").shouldHave(text("qaguru@qa.guru"));
     }
 }
