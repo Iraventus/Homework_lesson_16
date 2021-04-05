@@ -4,6 +4,7 @@ plugins {
 }
 
 repositories {
+    maven {url = "https://dl.bintray.com/qameta/maven-unstable/"}
     mavenCentral()
 }
 
@@ -34,6 +35,11 @@ dependencies {
 
 tasks.withType(JavaCompile) {
     options.encoding = "UTF-8"
+}
+
+tasks.withType(Test) {
+    systemProperties += System.properties
+    systemProperty("junit.jupiter.extensions.autodetection.enabled", "true")
 }
 
 test {
