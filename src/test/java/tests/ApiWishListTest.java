@@ -1,6 +1,7 @@
 package tests;
 
 import io.restassured.response.Response;
+import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 
 import static restAssured.CustomSpec.spec;
@@ -11,6 +12,7 @@ import static utils.FileUtils.readStringFromFile;
 public class ApiWishListTest extends TestBase {
 
     @Test
+    @DisplayName("Add item to wishlist")
     void addItemToWishlist() {
         String messageText = readStringFromFile("./src/test/resources/message_text.txt");
 

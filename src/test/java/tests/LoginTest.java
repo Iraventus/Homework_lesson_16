@@ -1,6 +1,7 @@
 package tests;
 
 import io.restassured.http.ContentType;
+import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 import org.openqa.selenium.Cookie;
 
@@ -15,6 +16,7 @@ import static io.restassured.RestAssured.given;
 public class LoginTest extends TestBase {
 
     @Test
+    @DisplayName("Successful UI login")
     void loginWithUiTest() {
         open("/login");
         $("#Email").val("qaguru@qa.guru");
@@ -23,6 +25,7 @@ public class LoginTest extends TestBase {
     }
 
     @Test
+    @DisplayName("Successful API login")
     void loginWithCookieTest() {
         Map<String, String> cookiesMap =
         given()
